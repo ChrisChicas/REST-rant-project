@@ -5,7 +5,7 @@ function Home(){
     return (
         <Def>
             <main>
-                <h1>HOME</h1>
+                <h1>REST-Rant</h1>
                 <div className="d-flex justify-content-center">
                     <img className="img-thumbnail text-center" src="/images/chai-fruit-drink.jpg" alt="Chai Fruit Drink" />
                 </div>
