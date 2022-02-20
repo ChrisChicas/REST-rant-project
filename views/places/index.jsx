@@ -4,9 +4,15 @@ const Def = require("../default.jsx")
 function Index(data){
     let placesFormatted = data.places.map((place) => {
         return (
-            <div key={"0123"}>
+            <div className="col-sm-6 text-center" key={"0123"}>
                 <h2>{place.name}</h2>
-                <img src={place.pic} alt={place.name} />
+                <p>
+                    {place.cuisines}
+                </p>
+                <img className="img-thumbnail" src={place.pic} alt={place.name}/>
+                <p>
+                    Located in {place.city}, {place.state}
+                </p>
             </div>
         )
     })
@@ -14,7 +20,15 @@ function Index(data){
         <Def>
             <main>
                 <h1>Places Index Page!</h1>
-                {placesFormatted}
+                <div className="row">
+                    {placesFormatted}
+                </div>
+                <div>
+                    H-Thai-ML Photo by <a href="https://unsplash.com/@chrisliverani?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chris Liverani</a> on <a href="https://unsplash.com/s/photos/restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                </div>
+                <div>
+                    Coding Cat Cafe Photo by <a href="https://unsplash.com/@herlifeinpixels?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hannah Wei</a> on <a href="https://unsplash.com/s/photos/cat-cafe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                </div>
             </main>
         </Def>
     )
