@@ -4,7 +4,7 @@ const Def = require("../default.jsx")
 function Index(data){
     let placesFormatted = data.places.map((place) => {
         return (
-            <div>
+            <div key={"0123"}>
                 <h2>{place.name}</h2>
                 <img src={place.pic} alt={place.name} />
             </div>
