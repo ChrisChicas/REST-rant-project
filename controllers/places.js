@@ -1,8 +1,15 @@
 const router = require("express").Router()
-const places = require("../models/places.js")
+const db = require("../models")
 
 router.get("/", (req, res) => {
-    res.render("./places/index", {places})
+    db.Place.find()
+    .then(places => {
+        res.render("./places/index", {places})
+    })
+    .catch(err => {
+        console.log(err)
+        res.render("error404")
+    })
 })
 
 router.get("/new", (req, res) => {
@@ -30,9 +37,14 @@ router.post("/", (req, res) => {
     if(!req.body.state){
         req.body.state = "USA"
     }
-    places.push(req.body)
-
-    res.redirect("/places")
+    db.Place.create(req.body)
+    .then(() => {
+        res.redirect("/places")
+    })
+    .catch(err => {
+        console.log("err", err)
+        res.render("error404")
+    })
 })
 
 router.get("/:id/edit", (req, res) => {
