@@ -28,15 +28,6 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    if(!req.body.pic){
-        req.body.pic = "http://placekitten.com/400/400"
-    }
-    if(!req.body.city){
-        req.body.city = "Anytown"
-    }
-    if(!req.body.state){
-        req.body.state = "USA"
-    }
     db.Place.create(req.body)
     .then(() => {
         res.redirect("/places")
