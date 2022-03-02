@@ -24,10 +24,14 @@ function edit_form(data){
                                 <label htmlFor="state">State</label>
                                 <input className="form-control" type="text" name="state" id="state" defaultValue={data.place.state} />    
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-sm-6">
                                 <label htmlFor="cuisines">Cuisines</label>
                                 <input className="form-control" type="text" name="cuisines" id="cuisines" defaultValue={data.place.cuisines} required/>    
-                        </div>  
+                        </div>
+                        <div className="form-group col-sm-6">
+                            <label htmlFor="founded">Founded Year</label>
+                            <input className="form-control" type="number" name="founded" id="founded" defaultValue={data.place.founded}/>    
+                        </div>   
                     </div>
                     <input className="btn btn-primary" type="submit" value="Add Place" />
                 </form>
