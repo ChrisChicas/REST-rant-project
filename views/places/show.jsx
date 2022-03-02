@@ -7,6 +7,7 @@ function show(data){
             <main>
                 <section>
                     <img className="img-thumbnail" src={data.place.pic} alt="" />
+                    <h3>Located in {data.place.city}, {data.place.state}</h3>
                 </section>
                 <h1>{data.place.name}</h1>
                 <section>
@@ -15,7 +16,8 @@ function show(data){
                 </section>
                 <section>
                     <h2>Description</h2>
-                    <h3>{`Located in ${data.place.city}, ${data.place.state} and serving ${data.place.cuisines}`}</h3>
+                    <h3>{data.place.showEstablished()}</h3>
+                    <h4>Serving {data.place.cuisines}</h4>
                 </section>
                 <a href={`/places/${data.id}/edit`} className="btn btn-warning">Edit</a>
                 <form action={`/places/${data.id}?_method=DELETE`} method="POST">
