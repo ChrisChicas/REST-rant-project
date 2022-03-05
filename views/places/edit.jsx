@@ -33,7 +33,7 @@ function edit_form(data){
                             <input className="form-control" type="number" name="founded" id="founded" defaultValue={data.place.founded}/>    
                         </div>   
                     </div>
-                    <input className="btn btn-primary" type="submit" value="Add Place" />
+                    <input className="btn btn-primary" type="submit" value="Save Changes" />
                 </form>
             </main>
         </Def>

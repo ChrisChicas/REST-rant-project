@@ -14,6 +14,10 @@ h1 {
     color: cornflowerblue;
 }
 
+h2 {
+    color: darkcyan;
+}
+
 .img-thumbnail {
     max-width: 25%;
     height: 50%;
@@ -42,4 +46,15 @@ nav a {
 nav a:hover {
     color: pink;
     text-decoration: none;
+}
+
+.form-check .form-check-input {
+    margin-top: 2em;
+    float: none;
+    width: 2em;
+    height: 2em;
+}
+
+.btn {
+    margin-right: 0.5em;
 }

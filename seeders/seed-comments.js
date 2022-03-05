@@ -9,7 +9,7 @@ async function seed(){
         content: "Wow, simply amazing! Highly recommended!"
     })
 
-    place.comments.push(comment.id)
+    place.comments.push(comment._id)
 
     await place.save()
 

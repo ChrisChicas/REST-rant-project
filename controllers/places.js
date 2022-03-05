@@ -18,6 +18,7 @@ router.get("/new", (req, res) => {
 
 router.get("/:id", (req, res) => {
     db.Place.findById(req.params.id)
+    .populate("comments")
     .then(place => {
         res.render("./places/show", {place})
     })
@@ -72,21 +73,38 @@ router.get("/:id/edit", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
-    if(req.body.pic == ""){
-        req.body.pic = undefined
-    }
-    if(req.body.city == ""){
-        req.body.city = undefined
-    }
-    if(req.body.state == ""){
-        req.body.state = undefined
-    }
-    if(req.body.founded == ""){
-        req.body.founded = undefined
-    }
     db.Place.findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
         res.redirect(`/places/${req.params.id}`)
+    })
+    .catch(err => {
+        console.log("err", err)
+        res.render("error404")
+    })
+})
+
+router.post("/:id/comment", (req, res) => {
+    if(req.body.author == ""){
+        req.body.author = undefined
+    }
+    if(req.body.rant == "on"){
+        req.body.rant = true
+    } else {
+        req.body.rant = undefined
+    }
+    if(req.body.content == ""){
+        req.body.content = undefined
+    }
+    db.Comment.create(req.body)
+    .then(comment => {
+        db.Place.findById(req.params.id)
+        .then(place => {
+            place.comments.push(comment._id)
+            place.save()
+            .then(() => {
+                res.redirect(`/places/${req.params.id}`)
+            })
+        })
     })
     .catch(err => {
         console.log("err", err)
@@ -98,6 +116,17 @@ router.delete("/:id", (req, res) => {
     db.Place.findByIdAndDelete(req.params.id)
     .then(() => {
         res.redirect("/places")
+    })
+    .catch(err => {
+        console.log("err", err)
+        res.render("error404")
+    })
+})
+
+router.delete("/:id/:commentid", (req, res) => {
+    db.Comment.findByIdAndDelete(req.params.commentid)
+    .then(() => {
+        res.redirect(`/places/${req.params.id}`)
     })
     .catch(err => {
         console.log("err", err)
