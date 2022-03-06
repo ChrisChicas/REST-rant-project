@@ -123,7 +123,7 @@ router.delete("/:id", (req, res) => {
     })
 })
 
-router.delete("/:id/:commentid", (req, res) => {
+router.delete("/:id/comment/:commentid", (req, res) => {
     db.Comment.findByIdAndDelete(req.params.commentid)
     .then(() => {
         res.redirect(`/places/${req.params.id}`)

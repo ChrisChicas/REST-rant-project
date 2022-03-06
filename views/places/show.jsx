@@ -5,6 +5,9 @@ function show(data){
     let comments = (
         <h3 className="inactive">No comments yet!</h3>
     )
+    let rating = (
+        <h3 className="inactive">No rating yet!</h3>
+    )
     if (data.place.comments.length){
         comments = data.place.comments.map(c => {
             return (
@@ -15,12 +18,25 @@ function show(data){
                         <strong>- {c.author}</strong>
                     </h3>
                     <h4>Rating: {c.stars}</h4>
-                    <form action={`/places/${data.place._id}/${c._id}?_method=DELETE`} method="POST">
+                    <form action={`/places/${data.place._id}/comment/${c._id}?_method=DELETE`} method="POST">
                         <button type="submit" className="btn btn-danger">Delete Comment</button>
                     </form>
                 </div>
             )
         })
+        let sumRatings = data.place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        let stars = ''
+        for(let i = 0; i < averageRating; i++){
+            stars += "⭐️"
+        }
+        rating = (
+            <h3>
+                {stars} stars
+            </h3>
+        )
     }
     return (
        <Def>
@@ -32,7 +48,7 @@ function show(data){
                 <h1>{data.place.name}</h1>
                 <section>
                     <h2>Rating</h2>
-                    <h3>Not Rated</h3>
+                    {rating}
                 </section>
                 <section>
                     <h2>Description</h2>
