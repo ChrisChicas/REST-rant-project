@@ -1,6 +1,6 @@
 # REST-Rant Project
 
-REST-rant is an app where users can review restautants.
+REST-rant is an app where users can review restautants. Reviews are displayed on a restautant's page while an overall rating is displayed in star form. Users are also able to create new restautants, update existing restautants, or even delete restautants if they so choose. Information that can be added/updated for restaurants can be seen while adding/updating restautants on the app itself, or below in this README.
 
 ## App Deployment:
 
