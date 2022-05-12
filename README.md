@@ -2,6 +2,10 @@
 
 REST-rant is an app where users can review restautants.
 
+## App Deployment:
+
+- App Link on Heroku: [Link](https://chrisc-rest-rant.herokuapp.com)
+
 
 ## App routes included:
 
