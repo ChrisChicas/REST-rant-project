@@ -2,11 +2,6 @@
 
 REST-rant is an app where users can review restaurants. Reviews are displayed on a restaurant's page while an overall rating is displayed in star form. Users are also able to create, update, or even delete existing restaurants if they so choose. Information that can be added/updated for restaurants can be seen while adding/updating restaurants on the app itself, or below in this README.
 
-## App Deployment:
-
-- App Link on [Heroku](https://chrisc-rest-rant.herokuapp.com)
-
-
 ## App routes included:
 
 | Method | Path | Purpose |
